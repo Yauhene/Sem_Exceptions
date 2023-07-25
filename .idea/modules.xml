@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Sem01_Exceptions_21072023/Sem01_Exceptions_21072023.iml" filepath="$PROJECT_DIR$/Sem01_Exceptions_21072023/Sem01_Exceptions_21072023.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Sem02_Exceptions_25072023/Sem02_Exceptions_25072023.iml" filepath="$PROJECT_DIR$/Sem02_Exceptions_25072023/Sem02_Exceptions_25072023.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Sem_Exceptions.iml" filepath="$PROJECT_DIR$/Sem_Exceptions.iml" />
+    </modules>
+  </component>
+</project>
