@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Sem01_Exceptions_21072023/Sem01_Exceptions_21072023.iml" filepath="$PROJECT_DIR$/Sem01_Exceptions_21072023/Sem01_Exceptions_21072023.iml" />
       <module fileurl="file://$PROJECT_DIR$/Sem02_Exceptions_25072023/Sem02_Exceptions_25072023.iml" filepath="$PROJECT_DIR$/Sem02_Exceptions_25072023/Sem02_Exceptions_25072023.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Sem03_Exceptions_28072023/Sem03_Exceptions_28072023.iml" filepath="$PROJECT_DIR$/Sem03_Exceptions_28072023/Sem03_Exceptions_28072023.iml" />
       <module fileurl="file://$PROJECT_DIR$/Sem_Exceptions.iml" filepath="$PROJECT_DIR$/Sem_Exceptions.iml" />
     </modules>
   </component>

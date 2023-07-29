@@ -24,12 +24,14 @@ public class hw_1 {
                 //System.out.println("Все хорошо, введенное число - " + number);
                 getOut = true;
                 //return number;
-            } catch (NumberFormatException e) {
-                System.out.println("---------- ??????!!!!! ---------------------");
-                System.out.println();
-                System.out.println("Непорядок... Вы ввели что-то несоответствующее типу double.");
-                System.out.println();
-                System.out.println("А ну-ка еще разок, только аккуратней!");
+            } catch (NumberFormatException e)
+            {
+                e.getStackTrace();
+//                System.out.println("---------- ??????!!!!! ---------------------");
+//                System.out.println();
+//                System.out.println("Непорядок... Вы ввели что-то несоответствующее типу double.");
+//                System.out.println();
+//                System.out.println("А ну-ка еще разок, только аккуратней!");
                 getOut = false;
                 number = 0;
             }
