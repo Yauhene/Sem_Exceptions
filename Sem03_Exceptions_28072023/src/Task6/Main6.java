@@ -1,5 +1,7 @@
 package Task6;
 
+import HomeWork.FileWorks.WriteInFileException;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -40,7 +42,7 @@ public class Main6 {
         }
     }
 
-    private static void saveToFile(String filePath, Map<String, String> map) throws WriteInFileException{
+    private static void saveToFile(String filePath, Map<String, String> map) throws WriteInFileException {
         try (FileWriter writer = new FileWriter(filePath)){
             for (Map.Entry<String, String> entry: map.entrySet()){
                 writer.write(entry.toString());
