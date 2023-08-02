@@ -11,8 +11,8 @@ public class Abonent {
     static public int index = 1;
 
 
-    public Abonent(String lName, String fName, String patronymic, String birthDay,
-                   String sex, String phoneNumber) {
+    public Abonent(String lName, String fName, String patronymic, String phoneNumber,
+                   String sex, String birthDay) {
         this.id = index;
         this.fName = fName;
         this.lName = lName;

@@ -1,26 +1,36 @@
 package HomeWork.Preparing;
 
+import HomeWork.Exceptions.*;
 import HomeWork.InputWorks.InputString;
-import HomeWork.Main;
 
-import static HomeWork.InputWorks.InputString.InputAb;
-import static HomeWork.InputWorks.InputString.paramCount;
+import java.util.ArrayList;
+
 
 public class Preparing {
     /**
      * Разбор строки с инфрмацией об абоненте на составляющие
      * с возвратом структурированной строки
+     *
      * @param inStr
      * @param outStr
      */
-    public static void Preparing(String[] inStr, String[] outStr) {
-        inputCheck(inStr,outStr);
-        findFIO(inStr,outStr);
-        findBDay(inStr,outStr);
-        findPhone(inStr,outStr);
-        findSex(inStr,outStr);
+    public static boolean PreparingArray(String[] inStr, String[] outStr) {
+        boolean next = false;
+        try {
+            findFIO(inStr, outStr);
+            findBDay(inStr, outStr);
+            findPhone(inStr, outStr);
+            findSex(inStr, outStr);
+            next = true;
+        } catch (CountFIOException | CountPhoneException | CountSexException e) {
+            System.out.println(e.getMessage());
+//            e.printStackTrace();
+        }
 
+        return next;
     }
+
+
     public static boolean IsBDateFormat(String pDate) {
         boolean bdFormat = false;
         boolean digits = false;
@@ -47,20 +57,22 @@ public class Preparing {
         //int counter = 0;
         int currIndex = 0;
         int validCount = 3;
+        int inpCount = 0;
+        ArrayList<String> list;
         String[] arr = new String[3];
+        list = new ArrayList<>();
         for (int i = 0; i < str.length; i++) {
-            if ((!str[i].matches("[.0-9]+")) && (str.length != 1 )) {
-                if (currIndex < validCount) {
-                    arr[currIndex] = str[i];
-                    currIndex++;
-                }
+            if ((!str[i].matches("[.0-9]+")) && (str[i].length() != 1)) {
+                list.add(str[i]);
             }
         }
-        if (currIndex != validCount) {
-            System.out.println("Несоответствие полей ФИО");
+        inpCount = list.size();
+        if (inpCount != InputString.FIOCount){
+            System.out.println();
+            throw new CountFIOException(validCount, list.size());
         } else {
             for (int i = 0; i < arr.length; i++) {
-                outStr[i] = arr[i];
+                outStr[i] = list.get(i);
             }
         }
         return arr;
@@ -76,39 +88,36 @@ public class Preparing {
                     outStr[4] = inStr[i];
                     count++;
                     if (count > limitCount) {
-                        System.out.println("Несоответствие количества полей ДР: " + limitCount);
+                        throw new CountBDException(InputString.bdCount, count);
                     }
                 }
-
-
             }
         }
     }
+
     public static void findPhone(String[] inStr, String[] outStr) {
-        int foundCount = -1;
+        int foundCount = 0;
         int limitCount = 1;
         for (int i = 0; i < inStr.length; i++) {
-//            System.out.println("i = " + i + "| inStr[i] = " + inStr[i]);
             if ((inStr[i].matches("[0-9]+"))) {
-                    outStr[5] = inStr[i];
-                    foundCount++;
-                    if (foundCount > limitCount) {
-                        System.out.println("Несоответствие количества полей телефонного номера: " + limitCount);
-                    }
+                outStr[5] = inStr[i];
+                foundCount++;
+                if (foundCount > limitCount) {
+                    throw new CountPhoneException(InputString.phoneCount, foundCount);
+                }
             }
         }
     }
+
     public static void findSex(String[] inStr, String[] outStr) {
         int foundCount = 0;
         int limitCount = 1;
         for (int i = 0; i < inStr.length; i++) {
-//            System.out.println("i = " + i + " | inStr[i] = " + inStr[i] + " | inStr[i].equals(\"m\") " + inStr[i].equals("m"));
             if ((inStr[i].length() == 1) && (inStr[i].equals("m") | inStr[i].equals("f"))) {
                 outStr[3] = inStr[i];
                 foundCount++;
-//                System.out.println("foundCount = " + foundCount);
                 if (foundCount > limitCount) {
-                    System.out.println("Несоответствие количества полей пола: " + foundCount);
+                    throw new CountSexException(InputString.sexCount, foundCount);
                 }
             }
         }
@@ -116,12 +125,24 @@ public class Preparing {
 
     /**
      * Проверка на соответствие строки с информацией об абоненте
-     * @param inStr
-     * @param outStr
+     *
+     * @param entered
+     * @param needed
      */
-    public static void inputCheck(String[] inStr, String[] outStr) {
-        if (inStr.length != InputString.paramCount) {
-            System.out.println("Несоответствие количества элементов в строке");
+    public static boolean inputCheck(int needed, int entered) {
+        boolean more = false;
+        if (entered < needed) {
+            more = false;
+            throw new CountExceptionLess(entered, needed);
         }
+        if (entered > needed) {
+            more = false;
+            throw new CountExceptionMore(entered, needed);
+        }
+        if (entered == needed) {
+            more = true;
+        }
+
+        return more;
     }
 }
