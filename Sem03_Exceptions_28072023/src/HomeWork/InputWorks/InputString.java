@@ -59,7 +59,7 @@ public class InputString {
     }
 
     /**
-     * Формирование массива строковых элементов из введенной строки
+     * Формирование массива строковых элементов из введенной пользователем строки
      *
      * @param str
      * @param inpArray
@@ -100,7 +100,7 @@ public class InputString {
      */
     public static void printAbonentArrayList(){
         if (abonentArrayList.size() > 0 | more == true) {
-            System.out.println("Состояние списка абонентов (" + abonentArrayList.size() + " записей) ==================================");
+            System.out.println("Состояние списка абонентов (записи:" + abonentArrayList.size() + " ) ==================================");
             for (int i = 0; i < abonentArrayList.size(); i++) {
                 System.out.println(abonentArrayList.get(i));
             }

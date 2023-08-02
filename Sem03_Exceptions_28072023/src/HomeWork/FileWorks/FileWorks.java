@@ -7,7 +7,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class FileWorks {
-
+    /**
+     * Печать данных из массива абонентов в файлы
+     * @param list
+     * @throws WriteInFileException
+     */
     public static void printAll(ArrayList<Abonent> list) throws WriteInFileException {
         String tempName;
         ArrayList<Abonent> tempArr;
