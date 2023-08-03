@@ -38,7 +38,6 @@ public class FileWorks {
                             wrString += "\n";
                         }
                         System.out.println("fileName: " + fileName);
-                        Main.printCount++;
                         writer.write(wrString);
                         writer.write("\n");
                         writer.flush();
@@ -47,9 +46,7 @@ public class FileWorks {
                         throw new WriteInFileException("Запись в файл не удалась", e);
                     }
                 }
-
                 }
-
         }
 
     /**
