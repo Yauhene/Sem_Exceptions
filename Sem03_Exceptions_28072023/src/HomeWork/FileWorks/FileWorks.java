@@ -1,10 +1,13 @@
 package HomeWork.FileWorks;
 
 import HomeWork.Abonent.Abonent;
+import HomeWork.Main;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class FileWorks {
     /**
@@ -17,28 +20,36 @@ public class FileWorks {
         ArrayList<Abonent> tempArr;
         String wrString = "";
         String fileName = "";
+        int printCount = 0;
+        HashSet<String> tempSet = new HashSet<>();
 
         for (int i = 0; i < list.size(); i++) {
             tempName = list.get(i).lName;
             tempArr = new ArrayList<>();
-            tempArr = getNamesakes(list, tempName);
-//            System.out.println("tempArr: " + tempArr );
-            fileName = "Sem03_Exceptions_28072023/src/HomeWork/" + tempName+".txt";
-            try (FileWriter writer = new FileWriter(fileName)) {
-                wrString = "";
-                for (int j = 0; j < tempArr.size(); j++) {
-                    wrString += tempArr.get(j);
-                    wrString += "\n";
+                if (!tempSet.contains(tempName)) {
+                    tempSet.add(tempName);
+                    tempArr = new ArrayList<>();
+                    tempArr = getNamesakes(list, tempName);
+                    fileName = "Sem03_Exceptions_28072023/src/HomeWork/" + tempName + ".txt";
+                    try (FileWriter writer = new FileWriter(fileName)) {
+                        wrString = "";
+                        for (int j = 0; j < tempArr.size(); j++) {
+                            wrString += tempArr.get(j);
+                            wrString += "\n";
+                        }
+                        System.out.println("fileName: " + fileName);
+                        Main.printCount++;
+                        writer.write(wrString);
+                        writer.write("\n");
+                        writer.flush();
+                        writer.flush();
+                    } catch (IOException e) {
+                        throw new WriteInFileException("Запись в файл не удалась", e);
+                    }
+                }
 
                 }
-                writer.write(wrString);
-                writer.write("\n");
-                writer.flush();
-                writer.flush();
-            } catch (IOException e) {
-                    throw new WriteInFileException("Запись в файл не удалась", e);
-            }
-            }
+
         }
 
     /**

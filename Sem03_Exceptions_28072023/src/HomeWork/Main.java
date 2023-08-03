@@ -1,5 +1,6 @@
 package HomeWork;
 
+import HomeWork.FileWorks.FileWorks;
 import HomeWork.FileWorks.WriteInFileException;
 import HomeWork.InputWorks.InputString;
 
@@ -9,6 +10,7 @@ import static HomeWork.InputWorks.InputString.*;
 import static HomeWork.Preparing.Preparing.*;
 
 public class Main {
+    public static int printCount = 0;
 
 //    Иванов Порфирий Кузьмич 09876789 m 23.08.1899;
 // Сараев Иван Иванович 88765543 m 14.12.1997
@@ -20,6 +22,7 @@ public class Main {
         InputAb();
         if (more) {
             printAll(abonentArrayList);
+            System.out.println("----------" + printCount +"----------");
         }
     }
 
