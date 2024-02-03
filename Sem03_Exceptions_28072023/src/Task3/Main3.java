@@ -19,6 +19,7 @@ public class Main3 {
     private static int extracted() {
         try (Counter counter = new Counter()){
             counter.add();
+            //counter.close();
             counter.add();
             return counter.getCount();
         } catch (IOException e){

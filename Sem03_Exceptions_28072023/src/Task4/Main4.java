@@ -19,9 +19,10 @@ public class Main4 {
             System.out.println(e.getMessage());
         }
     }
+
     public static double calculate (int a, int b){
         if (b==0){
-            throw new DivisionByZeroException("You can\'t division by 0 ");
+            throw new DivisionByZeroException("Хер тебе, а не деление на 0.\nВон пошел, недоучка !!!");
         }
         return a/b;
     }

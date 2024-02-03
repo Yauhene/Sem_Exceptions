@@ -5,6 +5,7 @@ import HomeWork.FileWorks.WriteInFileException;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -29,10 +30,13 @@ public class Main6 {
     }
 
     private static void readAndWrite() {
+            
         try {
-            Map<String, String> map = readFile("Sem03_Exceptions_28072023/src/Task6/test.txt");
+            Map<String, String> map = readFile("src/Task6/test.txt");
+            // System.out.println(map);
+            // System.out.println(map.get("Елена"));
             replaceText(map);
-            saveToFile("Sem03_Exceptions_28072023/src/Task6/test1.txt", map);
+            saveToFile("src/Task6/test1.txt", map);
         } catch (IOException e){
             System.out.println(e.getMessage());
             e.printStackTrace();

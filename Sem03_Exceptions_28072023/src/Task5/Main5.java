@@ -1,7 +1,7 @@
 package Task5;
 
-//1.
-//        Напиши т е м е т о д на в х о д к о т оро г о по да ё т ся д в умерный с тро к овый мас сив
+//        1.
+//        Напишите метод на вход которого подаётся двумерный строковый массив
 //        размером 4х4. При подаче массива другого размера необходимо бросить
 //        исключение MyArraySizeException.
 //        2.
@@ -22,6 +22,7 @@ public class Main5 {
                 {"1", "2", "3", "4"},
                 {"5", "2", "7", "O"},
                 {"1", "-5", "sda", "4"},
+                // {"1", "-5", "sda"},
                 {"11", "200", "3", "4"},
         };
         while (true) {
@@ -30,6 +31,7 @@ public class Main5 {
                 break;
             } catch (MyArraySizeException e) {
                 System.out.println(e.getMessage());
+                break;
             } catch (MyArrayDataException e) {
                 System.out.println(e.getMessage());
                 array[e.getI()][e.getJ()] = "0";
@@ -43,18 +45,21 @@ public class Main5 {
         if (array.length != length){
             throw new MyArraySizeException(length, array.length);
         }
-        for (int i = 0; i < array.length; i++) {
+        
+        for (int i = 0; i < array.length ; i++) {
             if (array[i].length != length){
                 throw new MyArraySizeException(i, length, array[i].length);
-            }
-            for (int j = 0; j < array[i].length; j++) {
-                try {
-                    int item = Integer.parseInt(array[i][j]);
-                    sum += item;
-                } catch (NumberFormatException e){
-                    throw new MyArrayDataException(i, j);
+            } 
+                for (int j = 0; j < array[i].length; j++) {
+                    try {
+                        int item = Integer.parseInt(array[i][j]);
+                        sum += item;
+                    } catch (NumberFormatException e){
+                        throw new MyArrayDataException(i, j);
                 }
             }
+                // System.out.println();
+            
         }
         return sum;
     }
